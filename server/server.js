@@ -26,18 +26,51 @@
 
 
 // app.get('/budget', (req, res) => {
-//     res.json(budget);
+//     res.json(budgetData);
 // });
 
 // app.listen(port, () => {
 //     console.log(`API served at http://localhost:${port}`);
 // });
 
+//---------------------
+
+// const express = require('express');
+// const fs = require('fs'); 
+
+// const app = express();
+// const port = 3000;
+
+// app.use('/', express.static('public'));
+
+
+// let budgetData = {};
+
+// const rawData = fs.readFileSync('budget_data.json');
+// budgetData = JSON.parse(rawData);
+
+// app.get('/hello', (req, res) => {
+//     res.send('Hello World!');
+// });
+
+// app.get('/budget', (req, res) => {
+//     res.json(budgetData);
+// });
+
+// app.listen(port, () => {
+//     console.log(`Example app listening at http://localhost:${port}`);
+// });
+
+
+//----------------------------
+
 const express = require('express');
-const fs = require('fs'); 
+const fs = require('fs');
+const cors = require('cors'); // Ensure this line is uncommented
 const app = express();
 const port = 3000;
 
+app.use(cors()); // Enable CORS for all routes and origins
 app.use('/', express.static('public'));
 
 let budgetData = {};
@@ -54,5 +87,5 @@ app.get('/budget', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Example app liostening at http://localhost:${port}`);
+    console.log(`Example app listening at http://localhost:${port}`);
 });
